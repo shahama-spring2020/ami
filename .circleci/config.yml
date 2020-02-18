@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  validate:
+  validate_json:
     docker:
       - image: hashicorp/packer:1.1.1
     working_directory: ~/packer
@@ -8,11 +8,9 @@ jobs:
       - checkout
       - run:
           name: Validate base
-          command: packer validate ./base/base.json
-      - run:
-          name: Validate snowflake
-          command: packer validate ./snowflake/snowflake.json
-  build-base:
+          command: packer validate ubuntu_ami.json
+
+  build-ami:
     docker:
       - image: hashicorp/packer:1.1.1
     working_directory: ~/packer
@@ -21,54 +19,25 @@ jobs:
       - attach_workspace:
           at: ~/packer
       - run:
-          name: Build base
-          command: ./scripts/build.sh base ./base/base.json
+          name: Build packer for ubuntu
+          command: packer build ubuntu_ami.json
           no_output_timeout: 30m
-      - persist_to_workspace:
-          root: .
-          paths:
-            - manifest-base.json
-      - store_artifacts:
-          path: manifest-base.json
-  build-snowflake:
-    docker:
-      - image: hashicorp/packer:1.1.1
-    working_directory: ~/packer
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/packer
-      - run:
-          name: Build snowflake
-          command: ./scripts/build.sh secondary ./snowflake/snowflake.json
-      - store_artifacts:
-          path: manifest-snowflake.json
-  canary-snowflake:
-    docker:
-      - image: hashicorp/packer:1.1.1
-    working_directory: ~/packer
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/packer
-      - run:
-          name: Install JQ
-          command: apk --no-cache add jq
-      - run:
-          name: Deploy canary
-          command: ./scripts/deploy-master-canary.sh
+
 workflows:
   version: 2
-  build-and-deploy:
+  build-and-deploy-ami:
     jobs:
-      - validate
-      - build-base:
+      - validate_json
+      - build-ami:
           requires:
             - validate
-      - build-snowflake:
-          requires:
-            - validate
-            - build-base
-      - canary-snowflake:
-          requires:
-            - build-snowflake
+          filters:
+            branches:
+              only: master
+  #
+  # build_deploy_workflow:
+  #   jobs:
+  #     - build:
+  #         filters:
+  #           branches:
+  #             only: master
