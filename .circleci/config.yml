@@ -29,8 +29,8 @@ workflows:
     jobs:
       - validate_json
       - build-ami:
-          requires:
-            - validate
+#          requires:
+#            - validate
           filters:
             branches:
               only: master
