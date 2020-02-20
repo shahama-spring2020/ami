@@ -25,11 +25,12 @@ jobs:
 
 workflows:
   version: 2SS
-  build-and-deploy-ami:
+  validate-ami:
     jobs:
       - validate_json
+  build-deploy-ami:
+    jobs:
       - build-ami:
-        
           filters:
             branches:
               only: master
