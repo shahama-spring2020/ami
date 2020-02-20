@@ -20,4 +20,4 @@
 6. packer build -var-file example.json
 
 
-Packer will produce and save the image on aws.
+Packer will produce and save the image on aws as well as a private ami on prod account
