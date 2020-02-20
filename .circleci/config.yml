@@ -24,17 +24,17 @@ jobs:
           no_output_timeout: 30m
 
 workflows:
-  version: 2
-  build-and-deploy-ami:
+  version: 2SS
+  validate-ami:
     jobs:
       - validate_json
-      - build-ami:
-#          requires:
-#            - validate
-          filters:
-            branches:
-              only: master
-  #
+    # build-deploy-ami:
+    #   jobs:
+    #     - build-ami:
+    #         filters:
+    #           branches:
+    #             only: master
+    #
   # build_deploy_workflow:
   #   jobs:
   #     - build:
