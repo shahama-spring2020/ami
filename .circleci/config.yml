@@ -24,7 +24,7 @@ jobs:
           no_output_timeout: 30m
 
 workflows:
-  version: 2SS
+  version: 2
   validate-ami:
     jobs:
       - validate_json
