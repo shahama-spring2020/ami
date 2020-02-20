@@ -28,12 +28,12 @@ workflows:
   validate-ami:
     jobs:
       - validate_json
-    # build-deploy-ami:
-    #   jobs:
-    #     - build-ami:
-    #         filters:
-    #           branches:
-    #             only: master
+    build-deploy-ami:
+      jobs:
+        - build-ami:
+            filters:
+              branches:
+                only: master
     #
   # build_deploy_workflow:
   #   jobs:
