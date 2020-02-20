@@ -26,9 +26,9 @@ workflows:
   build-and-deploy:
     jobs:
       - validate
-  build-and-merge:
-    jobs:
-      - build-base:
-          filters:
-            branches:
-              only: master
+  # build-and-merge:
+  #   jobs:
+  #     - build-base:
+  #         filters:
+  #           branches:
+  #             only: master
