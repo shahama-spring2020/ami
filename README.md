@@ -1,5 +1,5 @@
 # ami build configuration
-
+#comment
 # AMI
 
 ## Packer
