@@ -1,7 +1,7 @@
 # ami build configuration
 #comment
 # AMI
-
+#comment 12
 ## Packer
 
 1. sudo wget https://releases.hashicorp.com/packer/0.12.0/packer_0.12.0_linux_amd64.zip
