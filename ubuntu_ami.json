@@ -44,7 +44,8 @@
                 "sudo apt-get install libpq-dev python-dev -y ",
                 "pip3 install --upgrade setuptools -y",
                 "sudo apt-get install python3.6-dev libmysqlclient-dev -y",
-                "sudo apt-get install libpq-dev -y",
+		"echo libpq"
+                "sudo apt-get install libpq-dev",
                 "sudo apt-get install unzip",
 
                 "cd /home/ubuntu",
