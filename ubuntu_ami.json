@@ -42,9 +42,8 @@
                 "sudo apt-get install apache2 -y",
                 "sudo apt-get install python3-pip python3-pip ruby wget -y",
                 "sudo apt-get install libpq-dev python-dev -y ",
-                "pip3 install --upgrade setuptools -y",
+                "pip3 install --upgrade setuptools",
                 "sudo apt-get install python3.6-dev libmysqlclient-dev -y",
-		"echo libpq"
                 "sudo apt-get install libpq-dev",
                 "sudo apt-get install unzip",
 
