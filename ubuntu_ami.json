@@ -39,21 +39,35 @@
             ],
             "inline": [
                 "sudo apt-get update",
+
+                "sudo apt-get install apache2 -y",
+                "sudo apt-get install python3-pip python3-pip ruby wget -y",
+                "sudo apt-get install libpq-dev python-dev -y ",
+                "pip3 install --upgrade setuptools",
+                "sudo apt-get install python3.6-dev libmysqlclient-dev",
+                "sudo apt-get install libpq-dev -y",
+
                 "sudo apt-get install python3-pip python3-pip ruby wget -y",
                 "sudo apt-get install libpq-dev python-dev -y ",
                 "pip3 install --upgrade setuptools",
                 "sudo apt-get install python3.6-dev libmysqlclient-dev -y",
                 "sudo apt-get install libpq-dev",
                 "sudo apt-get install unzip",
-
                 "cd /home/ubuntu",
                 "wget https://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install",
                 "chmod +x ./install",
                 "sudo ./install auto",
                 "sudo service codedeploy-agent start",
-                "sudo service codedeploy-agent status"
+              "sudo service codedeploy-agent status",
+              "wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb",
+              "sudo dpkg -i -E ./amazon-cloudwatch-agent.deb",
+              "sudo systemctl enable amazon-cloudwatch-agent.service",
+              "sudo systemctl start amazon-cloudwatch-agent.service",
+
+              "sudo service codedeploy-agent status"
             ]
         }
     ]
 }
+
 
